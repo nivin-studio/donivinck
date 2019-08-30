@@ -23,6 +23,8 @@ services:
   nginx:
     build:
       context: ./nginx
+    environment:
+      - TZ=${TZ}
     volumes:
       - ${CODE_PATH_HOST}:/var/www
       - ${LOGS_PATH_HOST}:/var/log/nginx
@@ -40,6 +42,7 @@ services:
   mysql:
     image: mysql:5.7
     environment:
+      - TZ=${TZ}
       - MYSQL_USER=${MYSQL_USERNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -55,6 +58,7 @@ services:
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
+      - TZ=${TZ}
       - PMA_ARBITRARY=1
       - PMA_HOST=${MYSQL_HOST}
       - PMA_PORT=${MYSQL_PORT}
@@ -73,6 +77,7 @@ services:
   mongo:
     image: mongo:4.0
     environment:
+      - TZ=${TZ}
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
     ports:
@@ -84,6 +89,7 @@ services:
   mongo-express:
     image: mongo-express
     environment:
+      - TZ=${TZ}
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_USERNAME}
       - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_PASSWORD}
       - ME_CONFIG_MONGODB_PORT=${MONGO_PORT}
@@ -99,6 +105,8 @@ services:
 
   redis:
     image: redis:5.0
+    environment:
+      - TZ=${TZ}
     volumes:
       - ${DATA_PATH_HOST}/redis:/data
     ports:
@@ -110,6 +118,7 @@ services:
   redis-webui:
     image: erikdubbelboer/phpredisadmin
     environment:
+      - TZ=${TZ}
       - REDIS_1_HOST=${REDIS_HOST}
       - REDIS_1_PORT=${REDIS_PORT}
     ports:
