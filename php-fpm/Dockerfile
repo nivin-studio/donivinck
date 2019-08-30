@@ -60,7 +60,8 @@ RUN curl -L -o /tmp/cphalcon.zip https://github.com/phalcon/cphalcon/archive/v3.
 
 USER root
 RUN curl -s http://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer
+    mv composer.phar /usr/local/bin/composer && \
+    composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
 USER root
 RUN apt-get clean && \
