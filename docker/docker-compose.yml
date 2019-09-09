@@ -3,8 +3,14 @@ version: '3'
 networks:
   frontend:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.26.0.0/16
   backend:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.27.0.0/16
 
 services:
   php-fpm:
