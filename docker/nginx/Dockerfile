@@ -16,6 +16,7 @@ RUN set -x ; \
 COPY nginx.conf /etc/nginx/
 COPY logrotate/nginx /etc/logrotate.d/
 
-CMD ["nginx"]
+ADD ./startup.sh /opt/startup.sh
+CMD ["/bin/bash", "/opt/startup.sh"]
 
 EXPOSE 80 443

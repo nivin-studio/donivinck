@@ -34,6 +34,7 @@ services:
     volumes:
       - ${CODE_PATH_HOST}:/var/www
       - ${LOGS_PATH_HOST}:/var/log/nginx
+      - ./nginx/ssl:/etc/nginx/ssl
       - ./nginx/sites:/etc/nginx/sites-available
     ports:
       - "80:80"
