@@ -39,7 +39,8 @@ RUN docker-php-ext-configure gd \
     docker-php-ext-configure zip --with-libzip && \
     docker-php-ext-install zip && \
     docker-php-ext-install pgsql && \
-    docker-php-ext-install mysqli
+    docker-php-ext-install mysqli && \
+    docker-php-ext-install pdo_mysql 
 
 USER root
 RUN pecl install -o -f redis && \
