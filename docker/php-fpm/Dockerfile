@@ -29,7 +29,9 @@ RUN apt-get update && \
       imagemagick \
       gcc \
       make \
-      re2c
+      re2c \
+      git \
+      vim
 
 USER root
 RUN docker-php-ext-configure gd \
