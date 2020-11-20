@@ -1,6 +1,6 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
-MAINTAINER Ving "ving@nivin.cn"
+LABEL maintainer="Ving <ving@nivin.cn>"
 
 USER root
 RUN apt-get update && \
@@ -31,7 +31,9 @@ RUN apt-get update && \
       make \
       re2c \
       git \
-      vim
+      vim \
+      cron \
+      supervisor
 
 USER root
 RUN docker-php-ext-configure gd \
@@ -42,10 +44,13 @@ RUN docker-php-ext-configure gd \
     docker-php-ext-install zip && \
     docker-php-ext-install pgsql && \
     docker-php-ext-install mysqli && \
-    docker-php-ext-install pdo_mysql 
+    docker-php-ext-install pdo_mysql && \
+    docker-php-ext-install pcntl && \
+    docker-php-ext-install bcmath
 
 USER root
-RUN pecl install -o -f redis && \
+RUN pecl channel-update pecl.php.net && \
+    pecl install -o -f redis && \
     docker-php-ext-enable redis && \
     pecl install taint && \
     docker-php-ext-enable taint && \
@@ -64,7 +69,7 @@ RUN curl -L -o /tmp/cphalcon.zip https://github.com/phalcon/cphalcon/archive/v3.
 USER root
 RUN curl -s http://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
-    composer config -g repo.packagist composer https://packagist.phpcomposer.com
+    composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 
 USER root
 RUN apt-get clean && \
@@ -72,6 +77,10 @@ RUN apt-get clean && \
     rm /var/log/lastlog /var/log/faillog
 
 RUN usermod -u 1000 www-data
+
+COPY supervisord.conf /etc/supervisord.conf
+
+ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
 
 WORKDIR /var/www
 

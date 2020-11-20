@@ -1,6 +1,6 @@
 FROM nginx:alpine
 
-MAINTAINER Ving "ving@nivin.cn"
+LABEL maintainer="Ving <ving@nivin.cn>"
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories && \
 	apk update && \

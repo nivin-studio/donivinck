@@ -14,11 +14,13 @@ networks:
 
 services:
   php-fpm:
-    image: nivinivin/phpwork:7.2
+    build:
+      context: ./php-fpm
     environment:
       - TZ=${TZ}
     volumes:
       - ./php-fpm/php7.2.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/supervisord.d:/etc/supervisor/conf.d
       - ${CODE_PATH_HOST}:/var/www
     expose:
       - "9000"
@@ -35,8 +37,8 @@ services:
     volumes:
       - ${CODE_PATH_HOST}:/var/www
       - ${LOGS_PATH_HOST}:/var/log/nginx
+      - ${SITE_PATH_HOST}:/etc/nginx/sites-available
       - ./nginx/ssl:/etc/nginx/ssl
-      - ./nginx/sites:/etc/nginx/sites-available
     ports:
       - "80:80"
       - "443:443"
