@@ -19,7 +19,7 @@ services:
     environment:
       - TZ=${TZ}
     volumes:
-      - ./php-fpm/php7.2.ini:/usr/local/etc/php/php.ini
+      - ./php-fpm/php7.3.ini:/usr/local/etc/php/php.ini
       - ./php-fpm/supervisord.d:/etc/supervisor/conf.d
       - ${CODE_PATH_HOST}:/var/www
     expose:
