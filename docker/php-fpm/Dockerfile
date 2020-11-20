@@ -80,8 +80,6 @@ RUN usermod -u 1000 www-data
 
 COPY supervisord.conf /etc/supervisord.conf
 
-ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c",  "/etc/supervisord.conf"]
-
 WORKDIR /var/www
 
 CMD ["php-fpm"]
