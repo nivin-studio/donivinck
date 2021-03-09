@@ -4,7 +4,10 @@ LABEL maintainer="Ving <ving@nivin.cn>"
 
 # 安装必要的软件包和依赖包
 USER root
-RUN apt-get update && \
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/' /etc/apt/sources.list && \
+    sed -i 's/security.debian.org/mirrors.aliyun.com/' /etc/apt/sources.list && \
+    sed -i 's/security-cdn.debian.org/mirrors.aliyun.com/' /etc/apt/sources.list && \
+    apt-get update && \
     apt-get upgrade -y && \
     pecl channel-update pecl.php.net && \
     apt-get install -y --no-install-recommends \
