@@ -16,12 +16,14 @@ services:
   php-fpm:
     build:
       context: ./php-fpm
+      args:
+        - PHP_INSTALL_PHALCON=${PHP_INSTALL_PHALCON}
     environment:
       - TZ=${TZ}
     volumes:
-      - ./php-fpm/php7.3.ini:/usr/local/etc/php/php.ini
-      - ./php-fpm/supervisord.d:/etc/supervisor/conf.d
       - ${CODE_PATH_HOST}:/var/www
+      - ${CONF_PATH_HOST}/php/php7.3.ini:/usr/local/etc/php/php.ini
+      - ${CONF_PATH_HOST}/supervisord:/etc/supervisord.d
     expose:
       - "9000"
     networks:
@@ -37,8 +39,9 @@ services:
     volumes:
       - ${CODE_PATH_HOST}:/var/www
       - ${LOGS_PATH_HOST}:/var/log/nginx
-      - ${SITE_PATH_HOST}:/etc/nginx/sites-available
-      - ./nginx/ssl:/etc/nginx/ssl
+      - ${CONF_PATH_HOST}/ssl:/etc/nginx/ssl
+      - ${CONF_PATH_HOST}/sites:/etc/nginx/sites-available
+      - ${CONF_PATH_HOST}/logrotate:/etc/logrotate.d
     ports:
       - "80:80"
       - "443:443"
@@ -95,8 +98,6 @@ services:
       - TZ=${TZ}
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
-    volumes:
-      - ${DATA_PATH_HOST}/mongo:/data/db
     ports:
       - "${MONGO_PORT}:27017"
     networks:

@@ -1,0 +1,8 @@
+[program:laravel]
+process_name=%(program_name)s
+command=/usr/local/bin/php /var/www/app/index.php
+autostart=true
+autorestart=true
+user=root
+redirect_stderr=true
+stdout_logfile=/var/www/app/out.log
