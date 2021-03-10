@@ -13,9 +13,9 @@ networks:
         - subnet: 172.27.0.0/16
 
 services:
-  php-fpm:
+  php:
     build:
-      context: ./php-fpm
+      context: ./php
       args:
         - PHP_INSTALL_PHALCON=${PHP_INSTALL_PHALCON}
     environment:
@@ -46,7 +46,7 @@ services:
       - "80:80"
       - "443:443"
     depends_on:
-      - php-fpm
+      - php
     networks:
       frontend:
         ipv4_address: 172.26.0.2
@@ -55,7 +55,8 @@ services:
     restart: always
 
   mysql:
-    image: mysql:5.7
+    build:
+      context: ./mysql
     environment:
       - TZ=${TZ}
       - MYSQL_USER=${MYSQL_USERNAME}
@@ -71,8 +72,9 @@ services:
         ipv4_address: 172.27.0.4
     restart: always
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
+  mysql-webui:
+    build:
+      context: ./mysql-webui
     environment:
       - TZ=${TZ}
       - MYSQL_USER=${MYSQL_USERNAME}
@@ -93,7 +95,8 @@ services:
     restart: always
 
   mongo:
-    image: mongo:4.0
+    build:
+      context: ./mongo
     environment:
       - TZ=${TZ}
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
@@ -107,8 +110,9 @@ services:
         ipv4_address: 172.27.0.5
     restart: always
 
-  mongo-express:
-    image: mongo-express
+  mongo-webui:
+    build:
+      context: ./mongo-webui
     environment:
       - TZ=${TZ}
       - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_USERNAME}
@@ -129,7 +133,8 @@ services:
     restart: always
 
   redis:
-    image: redis:5.0
+    build:
+      context: ./redis
     environment:
       - TZ=${TZ}
     volumes:
@@ -142,7 +147,8 @@ services:
     restart: always
 
   redis-webui:
-    image: erikdubbelboer/phpredisadmin
+    build:
+      context: ./redis-webui
     environment:
       - TZ=${TZ}
       - REDIS_1_HOST=${REDIS_HOST}
