@@ -98,6 +98,8 @@ services:
       - TZ=${TZ}
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    volumes:
+      - ${DATA_PATH_HOST}/mongo:/data/db
     ports:
       - "${MONGO_PORT}:27017"
     networks:
