@@ -1,11 +1,23 @@
 module.exports = {
-    base:'/donivinck/',
-    title: 'Docker Web服务搭建',
-    description: '本文介绍 Docker 的基础知识，Dockerfile 的编写，Web 应用常见服务的搭建，包括 Redis 集群搭建，Mysql 集群搭建，以及使用 docker-compose 搭建适用于 Laravel 项目的 PHP Web 服务的项目实战',
+    base: '/donivinck/',
+    title: 'donivinck',
+    description: '一个基于 Docker 的 PHP 运行环境，支持 Mysql，Redis，Mongo 等服务。支持 Logrotate 日志分片，Supervisord 进程守护等功能。',
     themeConfig: {
         nav: [
-            { text: 'Home', link: '/' },
+            { text: '文档', link: '/guide/use' },
+            { text: 'Docker Web服务搭建', link: '/docker/docker-command' },
             { text: 'Github', link: 'https://github.com/nivin-studio/donivinck' },
-        ]
+        ],
+        sidebar: {
+            '/guide/': [
+                'use',
+            ],
+            '/docker/': [
+                'docker-command',
+                'dockerfile-command',
+                'msql-cluster-bulid',
+                'redis-cluster-bulid',
+            ],
+        }
     }
 }
