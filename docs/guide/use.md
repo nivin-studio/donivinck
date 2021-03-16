@@ -1,16 +1,79 @@
-# 数据web管理
+# 使用
 
-## Mysql
-    http://localhost:1000/
+## 准备
+你的本地环境需要安装 Docker Desktop 和 Git。
+
+## 安装
+克隆本项目到本地
+```bash
+$ git clone https://github.com/nivin-studio/donivinck.git
+```
+
+目录结构
+```bash
+├── code                        # 项目代码
+│   └── app                     # 默认项目
+├── conf                        # 配置文件夹
+│   ├── logrotate               # 日志分片配置
+│   ├── php                     # php配置
+│   ├── sites                   # 站点配置
+│   ├── ssl                     # ssl证书
+│   └── supervisord             # 进程守护配置
+├── data                        # 容器数据文件映射目录
+├── docker                      # 服务容器Dockerfile
+│   ├── mongo                   # mogon服务容器
+│   │   └── Dockerfile          
+│   ├── mongo-webui             # mogon web数据管理服务容器
+│   │   └── Dockerfile
+│   ├── mysql                   # mysql服务容器
+│   │   └── Dockerfile
+│   ├── mysql-webui             # mysql web数据管理服务容器
+│   │   └── Dockerfile
+│   ├── nginx                   # nginx服务容器
+│   │   ├── Dockerfile
+│   │   ├── logrotate.conf      # 日志分片主配置
+│   │   ├── nginx.conf          # nginx主配置
+│   │   └── startup.sh          # 启动脚本
+│   ├── php                     # php服务容器
+│   │   ├── Dockerfile
+│   │   ├── startup.sh          # 启动脚本
+│   │   └── supervisord.conf    # 进程守护主配置
+│   ├── redis                   # redis服务容器
+│   │   └── Dockerfile
+│   ├── redis-webui             # redis web服务容器
+│   │   └── Dockerfile
+│   ├── .env                    # docker-compose 配置文件
+│   └── docker-compose.yml      # docker-compose 
+├── docs                        # 使用文档
+├── logs                        # 容器相关日志文件映射目录
+├── package.json                # package.json
+└── README.md                   # README.md
+```
+
+运行 docker-compose 来构建环境
+```bash
+$ cd docker
+$ docker-compose up -d
+```
+
+## 运行
+容器全部启动成功，访问如下地址。
+
+### 项目访问
+    地址：http://127.0.0.1      # 默认访问项目/code/app
+
+
+## Mysql数据管理
+    地址：http://localhost:1000/
     用户：root
     密码：123456
 
-## Mongo
-    http://localhost:2000/
+## Mongo数据管理
+    地址：http://localhost:2000/
     用户：root
     密码：123456
 
-## Redis
-    http://localhost:3000/
+## Redis数据管理
+    地址：http://localhost:3000/
     用户：root
     密码：123456

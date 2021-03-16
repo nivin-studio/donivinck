@@ -17,12 +17,12 @@ CMD echo "Hello World!"
 :::
 
 ```bash
- docker build -t nivinivin/alpine:v1 .
+$ docker build -t nivinivin/alpine:v1 .
 ```
 
 使用  docker run  命令用刚刚构建好的镜像创建并启动一个容器，就可以看见输出的“Hello World!”。
 ```bash
-docker run nivinivin/alpine:v1
+$ docker run nivinivin/alpine:v1
 ```
 
 ## 指令
