@@ -14,6 +14,7 @@ module.exports = {
         sidebar: {
             '/guide/': [
                 'use',
+                'case',
             ],
             '/docker/': [
                 'docker-command',
