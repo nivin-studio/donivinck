@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 | donivinck</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/donivinck/assets/img/favicon.ico">
+    <meta name="description" content="一个基于 Docker 的 PHP 运行环境，支持 Mysql，Redis，Mongo 等服务。支持 Swoole 协程框架，Logrotate 日志分片，Supervisord 进程守护等功能。">
+    
+    <link rel="preload" href="/donivinck/assets/css/0.styles.9325f42e.css" as="style"><link rel="preload" href="/donivinck/assets/js/app.b66a2424.js" as="script"><link rel="preload" href="/donivinck/assets/js/2.57a928f2.js" as="script"><link rel="preload" href="/donivinck/assets/js/13.fb2a55f0.js" as="script"><link rel="prefetch" href="/donivinck/assets/js/10.464d2186.js"><link rel="prefetch" href="/donivinck/assets/js/11.d495fc0f.js"><link rel="prefetch" href="/donivinck/assets/js/12.ebf97478.js"><link rel="prefetch" href="/donivinck/assets/js/3.2d1a714f.js"><link rel="prefetch" href="/donivinck/assets/js/4.f8e98866.js"><link rel="prefetch" href="/donivinck/assets/js/5.30fca801.js"><link rel="prefetch" href="/donivinck/assets/js/6.b00d925a.js"><link rel="prefetch" href="/donivinck/assets/js/7.603a5778.js"><link rel="prefetch" href="/donivinck/assets/js/8.c59f671e.js"><link rel="prefetch" href="/donivinck/assets/js/9.243c7ebc.js">
+    <link rel="stylesheet" href="/donivinck/assets/css/0.styles.9325f42e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/donivinck/" class="home-link router-link-active"><!----> <span class="site-name">donivinck</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/donivinck/guide/use.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  文档
+</a></div><div class="nav-item"><a href="/donivinck/docker/docker-command.html" class="nav-link">
+  Docker Web服务搭建
+</a></div><div class="nav-item"><a href="https://github.com/nivin-studio/donivinck" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/donivinck/guide/use.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  文档
+</a></div><div class="nav-item"><a href="/donivinck/docker/docker-command.html" class="nav-link">
+  Docker Web服务搭建
+</a></div><div class="nav-item"><a href="https://github.com/nivin-studio/donivinck" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/donivinck/guide/use.html" aria-current="page" class="active sidebar-link">使用</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/donivinck/guide/use.html#准备" class="sidebar-link">准备</a></li><li class="sidebar-sub-header"><a href="/donivinck/guide/use.html#安装" class="sidebar-link">安装</a></li><li class="sidebar-sub-header"><a href="/donivinck/guide/use.html#运行" class="sidebar-link">运行</a></li></ul></li><li><a href="/donivinck/guide/case.html" class="sidebar-link">Lravel项目案例</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h1> <h2 id="准备"><a href="#准备" class="header-anchor">#</a> 准备</h2> <p>你的本地环境需要安装 <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer">Docker<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 或 <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener noreferrer">Docker Desktop<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 和 <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <p>克隆本项目到本地</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token function">git</span> clone https://github.com/nivin-studio/donivinck.git
+</code></pre></div><p>目录结构</p> <div class="language-bash extra-class"><pre class="language-bash"><code>├── code                        <span class="token comment"># 项目代码</span>
+│   └── app                     <span class="token comment"># 默认项目</span>
+├── conf                        <span class="token comment"># 配置文件夹</span>
+│   ├── <span class="token function">logrotate</span>               <span class="token comment"># 日志分片配置</span>
+│   ├── php                     <span class="token comment"># php配置</span>
+│   ├── sites                   <span class="token comment"># 站点配置</span>
+│   ├── ssl                     <span class="token comment"># ssl证书</span>
+│   └── supervisord             <span class="token comment"># 进程守护配置</span>
+├── data                        <span class="token comment"># 容器数据文件映射目录</span>
+├── docker                      <span class="token comment"># 服务容器Dockerfile</span>
+│   ├── mongo                   <span class="token comment"># mogon服务容器</span>
+│   │   └── Dockerfile          
+│   ├── mongo-webui             <span class="token comment"># mogon web数据管理服务容器</span>
+│   │   └── Dockerfile
+│   ├── mysql                   <span class="token comment"># mysql服务容器</span>
+│   │   └── Dockerfile
+│   ├── mysql-webui             <span class="token comment"># mysql web数据管理服务容器</span>
+│   │   └── Dockerfile
+│   ├── nginx                   <span class="token comment"># nginx服务容器</span>
+│   │   ├── Dockerfile
+│   │   ├── logrotate.conf      <span class="token comment"># 日志分片主配置</span>
+│   │   ├── nginx.conf          <span class="token comment"># nginx主配置</span>
+│   │   └── startup.sh          <span class="token comment"># 启动脚本</span>
+│   ├── php                     <span class="token comment"># php服务容器</span>
+│   │   ├── Dockerfile
+│   │   ├── startup.sh          <span class="token comment"># 启动脚本</span>
+│   │   └── supervisord.conf    <span class="token comment"># 进程守护主配置</span>
+│   ├── redis                   <span class="token comment"># redis服务容器</span>
+│   │   └── Dockerfile
+│   ├── redis-webui             <span class="token comment"># redis web服务容器</span>
+│   │   └── Dockerfile
+│   ├── .env                    <span class="token comment"># docker-compose 配置文件</span>
+│   └── docker-compose.yml      <span class="token comment"># docker-compose </span>
+├── docs                        <span class="token comment"># 使用文档</span>
+├── logs                        <span class="token comment"># 容器相关日志文件映射目录</span>
+├── package.json                <span class="token comment"># package.json</span>
+└── README.md                   <span class="token comment"># README.md</span>
+</code></pre></div><p>确保 Docker 服务已启动运行，使用 docker-compose 来构建环境。根据本地网络环境不同，构建时间也有所影响，一般大概（5分钟左右）。</p> <div class="custom-block tip"><p class="custom-block-title">提示</p> <p>如果构建失败，可以循环往复执行 docker-compose 命令，直至容器构建运行成功！！！</p></div> <div class="language-bash extra-class"><pre class="language-bash"><code>$ <span class="token builtin class-name">cd</span> docker
+$ docker-compose up -d
+</code></pre></div><h2 id="运行"><a href="#运行" class="header-anchor">#</a> 运行</h2> <p>容器全部启动运行成功，访问如下地址。</p> <h3 id="项目访问"><a href="#项目访问" class="header-anchor">#</a> 项目访问</h3> <div class="language- extra-class"><pre><code>地址：http://127.0.0.1      # 默认访问项目/code/app
+</code></pre></div><h3 id="mysql数据管理"><a href="#mysql数据管理" class="header-anchor">#</a> Mysql数据管理</h3> <div class="language- extra-class"><pre><code>地址：http://localhost:1000/
+用户：root
+密码：123456
+</code></pre></div><h3 id="mongo数据管理"><a href="#mongo数据管理" class="header-anchor">#</a> Mongo数据管理</h3> <div class="language- extra-class"><pre><code>地址：http://localhost:2000/
+用户：root
+密码：123456
+</code></pre></div><h3 id="redis数据管理"><a href="#redis数据管理" class="header-anchor">#</a> Redis数据管理</h3> <div class="language- extra-class"><pre><code>地址：http://localhost:3000/
+用户：root
+密码：123456</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/donivinck/guide/case.html">
+        Lravel项目案例
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/donivinck/assets/js/app.b66a2424.js" defer></script><script src="/donivinck/assets/js/2.57a928f2.js" defer></script><script src="/donivinck/assets/js/13.fb2a55f0.js" defer></script>
+  </body>
+</html>

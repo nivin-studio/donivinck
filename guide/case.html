@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lravel项目案例 | donivinck</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/donivinck/assets/img/favicon.ico">
+    <meta name="description" content="一个基于 Docker 的 PHP 运行环境，支持 Mysql，Redis，Mongo 等服务。支持 Swoole 协程框架，Logrotate 日志分片，Supervisord 进程守护等功能。">
+    
+    <link rel="preload" href="/donivinck/assets/css/0.styles.9325f42e.css" as="style"><link rel="preload" href="/donivinck/assets/js/app.b66a2424.js" as="script"><link rel="preload" href="/donivinck/assets/js/2.57a928f2.js" as="script"><link rel="preload" href="/donivinck/assets/js/12.ebf97478.js" as="script"><link rel="prefetch" href="/donivinck/assets/js/10.464d2186.js"><link rel="prefetch" href="/donivinck/assets/js/11.d495fc0f.js"><link rel="prefetch" href="/donivinck/assets/js/13.fb2a55f0.js"><link rel="prefetch" href="/donivinck/assets/js/3.2d1a714f.js"><link rel="prefetch" href="/donivinck/assets/js/4.f8e98866.js"><link rel="prefetch" href="/donivinck/assets/js/5.30fca801.js"><link rel="prefetch" href="/donivinck/assets/js/6.b00d925a.js"><link rel="prefetch" href="/donivinck/assets/js/7.603a5778.js"><link rel="prefetch" href="/donivinck/assets/js/8.c59f671e.js"><link rel="prefetch" href="/donivinck/assets/js/9.243c7ebc.js">
+    <link rel="stylesheet" href="/donivinck/assets/css/0.styles.9325f42e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/donivinck/" class="home-link router-link-active"><!----> <span class="site-name">donivinck</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/donivinck/guide/use.html" class="nav-link">
+  文档
+</a></div><div class="nav-item"><a href="/donivinck/docker/docker-command.html" class="nav-link">
+  Docker Web服务搭建
+</a></div><div class="nav-item"><a href="https://github.com/nivin-studio/donivinck" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/donivinck/guide/use.html" class="nav-link">
+  文档
+</a></div><div class="nav-item"><a href="/donivinck/docker/docker-command.html" class="nav-link">
+  Docker Web服务搭建
+</a></div><div class="nav-item"><a href="https://github.com/nivin-studio/donivinck" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/donivinck/guide/use.html" class="sidebar-link">使用</a></li><li><a href="/donivinck/guide/case.html" aria-current="page" class="active sidebar-link">Lravel项目案例</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/donivinck/guide/case.html#创建项目" class="sidebar-link">创建项目</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="lravel项目案例"><a href="#lravel项目案例" class="header-anchor">#</a> Lravel项目案例</h1> <blockquote><p>本项目案例将介绍如果使用 donivinck 来运行 Laravel 项目</p></blockquote> <h2 id="创建项目"><a href="#创建项目" class="header-anchor">#</a> 创建项目</h2> <p>进入php容器中，通过 Composer 来创建 Laravel6.0 项目</p> <div class="language-bash extra-class"><pre class="language-bash"><code>$ docker <span class="token function">ps</span> -a <span class="token comment"># 查看容器列表</span>
+CONTAINER ID   IMAGE                COMMAND                  CREATED      STATUS       PORTS                                      NAMES
+1bc569241394   docker_mongo-webui   <span class="token string">&quot;tini -- /docker-ent…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:2000-<span class="token operator">&gt;</span><span class="token number">8081</span>/tcp                     docker_mongo-webui_1
+a7b2e7f22c35   docker_mysql-webui   <span class="token string">&quot;/docker-entrypoint.…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:1000-<span class="token operator">&gt;</span><span class="token number">80</span>/tcp                       docker_mysql-webui_1
+7ae8cc125ca1   docker_nginx         <span class="token string">&quot;/docker-entrypoint.…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:80-<span class="token operator">&gt;</span><span class="token number">80</span>/tcp, <span class="token number">0.0</span>.0.0:443-<span class="token operator">&gt;</span><span class="token number">443</span>/tcp   docker_nginx_1
+aeabb3d56dbf   docker_redis-webui   <span class="token string">&quot;tini -- php -S 0.0.…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:3000-<span class="token operator">&gt;</span><span class="token number">80</span>/tcp                       docker_redis-webui_1
+bbe09b498654   docker_php           <span class="token string">&quot;docker-php-entrypoi…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">9000</span>/tcp                                   docker_php_1
+700d10c5f15a   docker_mongo         <span class="token string">&quot;docker-entrypoint.s…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:27017-<span class="token operator">&gt;</span><span class="token number">27017</span>/tcp                   docker_mongo_1
+671c586ac41c   docker_redis         <span class="token string">&quot;docker-entrypoint.s…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:6379-<span class="token operator">&gt;</span><span class="token number">6379</span>/tcp                     docker_redis_1
+c567b7934e91   docker_mysql         <span class="token string">&quot;docker-entrypoint.s…&quot;</span>   <span class="token number">7</span> days ago   Up <span class="token number">3</span> hours   <span class="token number">0.0</span>.0.0:3306-<span class="token operator">&gt;</span><span class="token number">3306</span>/tcp, <span class="token number">33060</span>/tcp          docker_mysql_1
+
+$ docker <span class="token builtin class-name">exec</span> -it docker_php_1 <span class="token function">bash</span> <span class="token comment"># 进入名称为 docker_php_1 的 php 服务容器的bash</span>
+root@bbe09b498654:/var/www<span class="token comment">#</span>
+
+<span class="token comment"># 默认情况进入 php 服务容器的 /var/www 目录下，以下命令将在容器中执行。</span>
+$ <span class="token function">composer</span> create-project --prefer-dist laravel/laravel <span class="token builtin class-name">test</span> <span class="token string">&quot;6.*&quot;</span>
+<span class="token comment"># 进入 test 项目</span>
+$ <span class="token builtin class-name">cd</span> <span class="token builtin class-name">test</span>
+<span class="token comment"># 修改 storage 和 bootstrap/cache 目录权限</span>
+$ <span class="token function">chmod</span> -R <span class="token number">777</span> storage bootstrap/cache
+<span class="token comment"># 创建 Laravel 项目密钥</span>
+$ php artisan key:generate
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/donivinck/guide/use.html" class="prev">
+        使用
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/donivinck/assets/js/app.b66a2424.js" defer></script><script src="/donivinck/assets/js/2.57a928f2.js" defer></script><script src="/donivinck/assets/js/12.ebf97478.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker命令 | donivinck</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/donivinck/assets/img/favicon.ico">
+    <meta name="description" content="一个基于 Docker 的 PHP 运行环境，支持 Mysql，Redis，Mongo 等服务。支持 Swoole 协程框架，Logrotate 日志分片，Supervisord 进程守护等功能。">
+    
+    <link rel="preload" href="/donivinck/assets/css/0.styles.9325f42e.css" as="style"><link rel="preload" href="/donivinck/assets/js/app.b66a2424.js" as="script"><link rel="preload" href="/donivinck/assets/js/2.57a928f2.js" as="script"><link rel="preload" href="/donivinck/assets/js/8.c59f671e.js" as="script"><link rel="prefetch" href="/donivinck/assets/js/10.464d2186.js"><link rel="prefetch" href="/donivinck/assets/js/11.d495fc0f.js"><link rel="prefetch" href="/donivinck/assets/js/12.ebf97478.js"><link rel="prefetch" href="/donivinck/assets/js/13.fb2a55f0.js"><link rel="prefetch" href="/donivinck/assets/js/3.2d1a714f.js"><link rel="prefetch" href="/donivinck/assets/js/4.f8e98866.js"><link rel="prefetch" href="/donivinck/assets/js/5.30fca801.js"><link rel="prefetch" href="/donivinck/assets/js/6.b00d925a.js"><link rel="prefetch" href="/donivinck/assets/js/7.603a5778.js"><link rel="prefetch" href="/donivinck/assets/js/9.243c7ebc.js">
+    <link rel="stylesheet" href="/donivinck/assets/css/0.styles.9325f42e.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/donivinck/" class="home-link router-link-active"><!----> <span class="site-name">donivinck</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/donivinck/guide/use.html" class="nav-link">
+  文档
+</a></div><div class="nav-item"><a href="/donivinck/docker/docker-command.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Docker Web服务搭建
+</a></div><div class="nav-item"><a href="https://github.com/nivin-studio/donivinck" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/donivinck/guide/use.html" class="nav-link">
+  文档
+</a></div><div class="nav-item"><a href="/donivinck/docker/docker-command.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  Docker Web服务搭建
+</a></div><div class="nav-item"><a href="https://github.com/nivin-studio/donivinck" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/donivinck/docker/docker-command.html" aria-current="page" class="active sidebar-link">Docker命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#镜像仓库操作" class="sidebar-link">镜像仓库操作</a></li><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#本地镜像管理" class="sidebar-link">本地镜像管理</a></li><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#容器生命周期" class="sidebar-link">容器生命周期</a></li><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#容器运维操作" class="sidebar-link">容器运维操作</a></li><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#容器数据卷" class="sidebar-link">容器数据卷</a></li><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#容器网络" class="sidebar-link">容器网络</a></li><li class="sidebar-sub-header"><a href="/donivinck/docker/docker-command.html#其他" class="sidebar-link">其他</a></li></ul></li><li><a href="/donivinck/docker/dockerfile-command.html" class="sidebar-link">Dockerfile介绍</a></li><li><a href="/donivinck/docker/msql-cluster-bulid.html" class="sidebar-link">MySQL PXC集群搭建</a></li><li><a href="/donivinck/docker/redis-cluster-bulid.html" class="sidebar-link">Redis Cluster搭建</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker命令"><a href="#docker命令" class="header-anchor">#</a> Docker命令</h1> <h2 id="镜像仓库操作"><a href="#镜像仓库操作" class="header-anchor">#</a> 镜像仓库操作</h2> <h3 id="docker-login"><a href="#docker-login" class="header-anchor">#</a> docker login</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#登录docker镜像仓库</span>
+语法：docker login <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>SERVER<span class="token punctuation">]</span>
+实例：docker login -u 用户名 -p 密码
+</code></pre></div><h3 id="docker-search"><a href="#docker-search" class="header-anchor">#</a> docker search</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#在镜像仓库中搜索镜像</span>
+语法：docker search <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token environment constant">TERM</span>
+实例：docker search redis
+</code></pre></div><h3 id="docker-pull"><a href="#docker-pull" class="header-anchor">#</a> docker pull</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#从镜像仓库中拉取或者更新指定镜像</span>
+语法：docker pull <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NAME<span class="token punctuation">[</span>:TAG<span class="token operator">|</span>@DIGEST<span class="token punctuation">]</span>
+实例：docker pull redis
+</code></pre></div><h3 id="docker-push"><a href="#docker-push" class="header-anchor">#</a> docker push</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#将本地的镜像上传到镜像仓库</span>
+语法：docker push <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NAME<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span>
+实例：docker push myRedis:v1
+</code></pre></div><h2 id="本地镜像管理"><a href="#本地镜像管理" class="header-anchor">#</a> 本地镜像管理</h2> <h3 id="docker-images"><a href="#docker-images" class="header-anchor">#</a> docker images</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#镜像列表</span>
+语法：docker images <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>REPOSITORY<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span><span class="token punctuation">]</span>
+实例：docker images
+</code></pre></div><h3 id="docker-rmi"><a href="#docker-rmi" class="header-anchor">#</a> docker rmi</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#删除一个或多个镜像</span>
+语法：docker rmi <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE <span class="token punctuation">[</span>IMAGE<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker rmi redis
+</code></pre></div><h3 id="docker-tag"><a href="#docker-tag" class="header-anchor">#</a> docker tag</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#给镜像创建新的标记</span>
+语法：docker tag SOURCE_IMAGE<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span> TARGET_IMAGE<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span>
+实例：docker tag redis:4.0 nivin/redis:v4
+</code></pre></div><h3 id="docker-build"><a href="#docker-build" class="header-anchor">#</a> docker build</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#通过Dockerfile文件构建一个镜像</span>
+语法：docker build <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token environment constant">PATH</span> <span class="token operator">|</span> URL <span class="token operator">|</span> -
+实例：docker build -t nivin/redis:v4 <span class="token builtin class-name">.</span> 
+</code></pre></div><h3 id="docker-history"><a href="#docker-history" class="header-anchor">#</a> docker history</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#显示镜像的创建过程</span>
+语法：docker <span class="token function">history</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE
+实例：docker <span class="token function">history</span> nivin/redis:v4
+</code></pre></div><h3 id="docker-save"><a href="#docker-save" class="header-anchor">#</a> docker save</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#将指定镜像保存成 tar 归档文件</span>
+语法：docker save <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE <span class="token punctuation">[</span>IMAGE<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker save -o redis_v4.tar nivin/redis:v4
+</code></pre></div><h3 id="docker-import"><a href="#docker-import" class="header-anchor">#</a> docker import</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#从归档文件中创建镜像</span>
+语法：docker <span class="token function">import</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token function">file</span><span class="token operator">|</span>URL<span class="token operator">|</span>- <span class="token punctuation">[</span>REPOSITORY<span class="token punctuation">[</span>:TAG<span class="token punctuation">]</span><span class="token punctuation">]</span>
+实例：docker <span class="token function">import</span> redis_v4.tar nivin/redis:v4
+</code></pre></div><h2 id="容器生命周期"><a href="#容器生命周期" class="header-anchor">#</a> 容器生命周期</h2> <h3 id="docker-run"><a href="#docker-run" class="header-anchor">#</a> docker run</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#创建一个新的容器并运行一个命令</span>
+语法：docker run <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE <span class="token punctuation">[</span>COMMAND<span class="token punctuation">]</span> <span class="token punctuation">[</span>ARG<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker run --name redis_container -p <span class="token number">80</span>:80 -v /data:/data -d redis:4.0
+</code></pre></div><h3 id="docker-start"><a href="#docker-start" class="header-anchor">#</a> docker start</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#启动一个或多个已经被停止的容器</span>
+语法：docker start <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker start redis_container
+</code></pre></div><h3 id="docker-stop"><a href="#docker-stop" class="header-anchor">#</a> docker stop</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#停止一个或多个正在运行的容器</span>
+语法：docker stop <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker stop redis_container
+</code></pre></div><h3 id="docker-restart"><a href="#docker-restart" class="header-anchor">#</a> docker restart</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#重新启动一个或多个容器</span>
+语法：docker restart <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker restart redis_container
+</code></pre></div><h3 id="docker-kill"><a href="#docker-kill" class="header-anchor">#</a> docker kill</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#杀死一个或多个正在运行的容器</span>
+语法：docker <span class="token function">kill</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker <span class="token function">kill</span> redis_container
+</code></pre></div><h3 id="docker-rm"><a href="#docker-rm" class="header-anchor">#</a> docker rm</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#删除一个或多个容器</span>
+语法：docker <span class="token function">rm</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker <span class="token function">rm</span> redis_container
+</code></pre></div><h3 id="docker-pause"><a href="#docker-pause" class="header-anchor">#</a> docker pause</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#暂停一个或多个容器中的所有进程</span>
+语法：docker pause CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker pause redis_container
+</code></pre></div><h3 id="docker-unpause"><a href="#docker-unpause" class="header-anchor">#</a> docker unpause</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#恢复一个或多个容器中的所有进程</span>
+语法：docker unpause CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker unpause redis_container
+</code></pre></div><h3 id="docker-create"><a href="#docker-create" class="header-anchor">#</a> docker create</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#创建容器</span>
+语法：docker create <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> IMAGE <span class="token punctuation">[</span>COMMAND<span class="token punctuation">]</span> <span class="token punctuation">[</span>ARG<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker create -t -i redis_container <span class="token function">bash</span>
+</code></pre></div><h3 id="docker-exec"><a href="#docker-exec" class="header-anchor">#</a> docker exec</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#在运行的容器中执行命令</span>
+语法：docker <span class="token builtin class-name">exec</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER COMMAND <span class="token punctuation">[</span>ARG<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker <span class="token builtin class-name">exec</span> -it redis_container <span class="token function">bash</span>
+</code></pre></div><h2 id="容器运维操作"><a href="#容器运维操作" class="header-anchor">#</a> 容器运维操作</h2> <h3 id="docker-ps"><a href="#docker-ps" class="header-anchor">#</a> docker ps</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#容器列表</span>
+语法：docker <span class="token function">ps</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker <span class="token function">ps</span> -a
+</code></pre></div><h3 id="docker-inspect"><a href="#docker-inspect" class="header-anchor">#</a> docker inspect</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#获取容器/镜像的元数据</span>
+语法：docker inspect <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NAME<span class="token operator">|</span>ID <span class="token punctuation">[</span>NAME<span class="token operator">|</span>ID<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker inspect redis_container
+</code></pre></div><h3 id="docker-top"><a href="#docker-top" class="header-anchor">#</a> docker top</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#显示容器的运行进程</span>
+语法：docker <span class="token function">top</span> CONTAINER <span class="token punctuation">[</span>ps OPTIONS<span class="token punctuation">]</span>
+实例：docker <span class="token function">top</span> redis_container
+</code></pre></div><h3 id="docker-attach"><a href="#docker-attach" class="header-anchor">#</a> docker attach</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#连接到正在运行中的容器</span>
+语法：docker attach <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER
+实例：docker attach redis_container
+</code></pre></div><h3 id="docker-events"><a href="#docker-events" class="header-anchor">#</a> docker events</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#从服务器获取实时事件</span>
+语法：docker events <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker events
+</code></pre></div><h3 id="docker-logs"><a href="#docker-logs" class="header-anchor">#</a> docker logs</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#获取容器的日志</span>
+语法：docker logs <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER
+实例：docker logs -f redis_container
+</code></pre></div><h3 id="docker-wait"><a href="#docker-wait" class="header-anchor">#</a> docker wait</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#阻塞运行直到容器停止，然后打印出它的退出代码</span>
+语法：docker <span class="token function">wait</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker <span class="token function">wait</span> redis_container
+</code></pre></div><h3 id="docker-export"><a href="#docker-export" class="header-anchor">#</a> docker export</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#将容器的文件系统导出为tar存档</span>
+语法：docker <span class="token builtin class-name">export</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER
+实例：docker <span class="token builtin class-name">export</span> redis_container <span class="token operator">&gt;</span> redis_container.tar
+</code></pre></div><h3 id="docker-port"><a href="#docker-port" class="header-anchor">#</a> docker port</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#列出容器的端口映射</span>
+语法：docker port
+实例：docker port redis_container
+</code></pre></div><h3 id="docker-update"><a href="#docker-update" class="header-anchor">#</a> docker update</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#更新一个或多个容器的配置</span>
+语法：docker update <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> CONTAINER <span class="token punctuation">[</span>CONTAINER<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker update --cpu-shares <span class="token number">512</span> redis_container
+</code></pre></div><h2 id="容器数据卷"><a href="#容器数据卷" class="header-anchor">#</a> 容器数据卷</h2> <h3 id="docker-volume-create"><a href="#docker-volume-create" class="header-anchor">#</a> docker volume create</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#创建数据卷</span>
+语法：docker volume create <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> <span class="token punctuation">[</span>VOLUME<span class="token punctuation">]</span>
+实例：docker volume create redis_volume
+</code></pre></div><h3 id="docker-volume-inspect"><a href="#docker-volume-inspect" class="header-anchor">#</a> docker volume inspect</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#显示一个或多个数据卷的详细信息</span>
+语法：docker volume inspect <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> VOLUME <span class="token punctuation">[</span>VOLUME<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker volume inspect redis_volume
+</code></pre></div><h3 id="docker-volume-ls"><a href="#docker-volume-ls" class="header-anchor">#</a> docker volume ls</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#数据卷列表</span>
+语法：docker volume <span class="token function">ls</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker volume <span class="token function">ls</span>
+</code></pre></div><h3 id="docker-volume-prune"><a href="#docker-volume-prune" class="header-anchor">#</a> docker volume prune</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#删除所有未使用的本地数据卷</span>
+语法：docker volume prune <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker volume prune
+</code></pre></div><h3 id="docker-volume-rm"><a href="#docker-volume-rm" class="header-anchor">#</a> docker volume rm</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#删除一个或多个数据卷</span>
+语法：docker volume <span class="token function">rm</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> VOLUME <span class="token punctuation">[</span>VOLUME<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker volume <span class="token function">rm</span> redis_volume
+</code></pre></div><h2 id="容器网络"><a href="#容器网络" class="header-anchor">#</a> 容器网络</h2> <h3 id="docker-network-create"><a href="#docker-network-create" class="header-anchor">#</a> docker network create</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#创建一个网络</span>
+语法：docker network create <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NETWORK
+实例：docker network create --driver<span class="token operator">=</span>bridge --subnet<span class="token operator">=</span><span class="token number">192.168</span>.0.0/16 redis_network
+</code></pre></div><h3 id="docker-network-connect"><a href="#docker-network-connect" class="header-anchor">#</a> docker network connect</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#连接容器到某个网络中</span>
+语法：docker network connect <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NETWORK CONTAINER
+实例：docker network connect redis_network redis_container
+</code></pre></div><h3 id="docker-network-disconnect"><a href="#docker-network-disconnect" class="header-anchor">#</a> docker network disconnect</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#断开容器与某个网络的连接</span>
+语法：docker network disconnect <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NETWORK CONTAINER
+实例：docker network disconnect redis_network redis_container
+</code></pre></div><h3 id="docker-network-inspect"><a href="#docker-network-inspect" class="header-anchor">#</a> docker network inspect</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#显示一个或多个网络的详细信息</span>
+语法：docker network inspect <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span> NETWORK <span class="token punctuation">[</span>NETWORK<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker network inspect redis_network
+</code></pre></div><h3 id="docker-network-ls"><a href="#docker-network-ls" class="header-anchor">#</a> docker network ls</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#网络列表</span>
+语法：docker network <span class="token function">ls</span> <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker network <span class="token function">ls</span>
+</code></pre></div><h3 id="docker-network-prune"><a href="#docker-network-prune" class="header-anchor">#</a> docker network prune</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#删除所有未使用的网络</span>
+语法：docker network prune <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker network prune
+</code></pre></div><h3 id="docker-network-rm"><a href="#docker-network-rm" class="header-anchor">#</a> docker network rm</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#删除一个或多个网络</span>
+语法：docker network <span class="token function">rm</span> NETWORK <span class="token punctuation">[</span>NETWORK<span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+实例：docker network <span class="token function">rm</span> redis_network
+</code></pre></div><h2 id="其他"><a href="#其他" class="header-anchor">#</a> 其他</h2> <h3 id="docker-info"><a href="#docker-info" class="header-anchor">#</a> docker info</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#显示 Docker 系统信息，包括镜像和容器数</span>
+语法：docker info <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker info
+</code></pre></div><h3 id="docker-version"><a href="#docker-version" class="header-anchor">#</a> docker version</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment">#显示 Docker 版本信息</span>
+语法：docker version <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
+实例：docker version
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/donivinck/docker/dockerfile-command.html">
+        Dockerfile介绍
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/donivinck/assets/js/app.b66a2424.js" defer></script><script src="/donivinck/assets/js/2.57a928f2.js" defer></script><script src="/donivinck/assets/js/8.c59f671e.js" defer></script>
+  </body>
+</html>
