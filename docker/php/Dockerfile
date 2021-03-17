@@ -63,7 +63,9 @@ RUN pecl channel-update pecl.php.net && \
     pecl install mongodb && \
     docker-php-ext-enable mongodb && \
     pecl install imagick && \
-    docker-php-ext-enable imagick
+    docker-php-ext-enable imagick && \
+    pecl install swoole-4.6.0 && \
+    docker-php-ext-enable swoole
 
 # 安装phalcon扩展
 USER root
