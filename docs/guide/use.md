@@ -1,7 +1,7 @@
 # 使用
 
 ## 准备
-你的本地环境需要安装Docker 或 Docker Desktop 和 Git。
+你的本地环境需要安装 [Docker](https://www.docker.com/) 或 [Docker Desktop](https://www.docker.com/products/docker-desktop) 和 [Git](https://git-scm.com/downloads)。
 
 ## 安装
 克隆本项目到本地

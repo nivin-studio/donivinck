@@ -1,7 +1,7 @@
 module.exports = {
     base: '/donivinck/',
     title: 'donivinck',
-    description: '一个基于 Docker 的 PHP 运行环境，支持 Mysql，Redis，Mongo 等服务。支持 Logrotate 日志分片，Supervisord 进程守护等功能。',
+    description: '一个基于 Docker 的 PHP 运行环境，支持 Mysql，Redis，Mongo 等服务。支持 Swoole 协程框架，Logrotate 日志分片，Supervisord 进程守护等功能。',
     head: [
         ['link', { rel: 'icon', href: '/assets/img/favicon.ico' }]
     ],
