@@ -24,6 +24,7 @@ services:
       - ${CODE_PATH_HOST}:/var/www
       - ${CONF_PATH_HOST}/php/php7.3.ini:/usr/local/etc/php/php.ini
       - ${CONF_PATH_HOST}/supervisord:/etc/supervisord.d
+      - ${LOGS_PATH_HOST}/supervisord:/var/log/supervisor
     expose:
       - "9000"
     networks:
@@ -38,10 +39,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${CODE_PATH_HOST}:/var/www
-      - ${LOGS_PATH_HOST}:/var/log/nginx
       - ${CONF_PATH_HOST}/ssl:/etc/nginx/ssl
       - ${CONF_PATH_HOST}/sites:/etc/nginx/sites-available
       - ${CONF_PATH_HOST}/logrotate:/etc/logrotate.d
+      - ${LOGS_PATH_HOST}/nginx:/var/log/nginx
     ports:
       - "80:80"
       - "443:443"
