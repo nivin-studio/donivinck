@@ -1,7 +1,7 @@
 # 使用
 
 ## 准备
-你的本地环境需要安装 Docker Desktop 和 Git。
+你的本地环境需要安装Docker 或 Docker Desktop 和 Git。
 
 ## 安装
 克隆本项目到本地
@@ -50,14 +50,19 @@ $ git clone https://github.com/nivin-studio/donivinck.git
 └── README.md                   # README.md
 ```
 
-运行 docker-compose 来构建环境
+确保 Docker 服务已启动运行，使用 docker-compose 来构建环境。根据本地网络环境不同，构建时间也有所影响，一般大概（5分钟左右）。
+
+::: tip 提示
+如果构建失败，可以循环往复执行 docker-compose 命令，直至容器构建运行成功！！！
+:::
+
 ```bash
 $ cd docker
 $ docker-compose up -d
 ```
 
 ## 运行
-容器全部启动成功，访问如下地址。
+容器全部启动运行成功，访问如下地址。
 
 ### 项目访问
     地址：http://127.0.0.1      # 默认访问项目/code/app
