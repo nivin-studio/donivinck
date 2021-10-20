@@ -12,6 +12,7 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.lis
     pecl channel-update pecl.php.net && \
     apt-get install -y --no-install-recommends \
     apt-utils \
+    openssl \
     curl \
     libmemcached-dev \
     libz-dev \
@@ -51,7 +52,8 @@ RUN docker-php-ext-configure gd \
     docker-php-ext-install mysqli && \
     docker-php-ext-install pdo_mysql && \
     docker-php-ext-install pcntl && \
-    docker-php-ext-install bcmath
+    docker-php-ext-install bcmath && \
+    docker-php-ext-install intl
 
 # 安装PHP业务扩展
 USER root
