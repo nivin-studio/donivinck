@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
+      - name: 代码检出
         uses: actions/checkout@v2
 
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: 构建部署
+        uses: JamesIves/github-pages-deploy-action@4.1.7
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: gh-pages
