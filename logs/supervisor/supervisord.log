@@ -1,5 +1,0 @@
-2021-12-27 16:28:05,164 WARN No file matches via include "/etc/supervisord.d/*.conf"
-2021-12-27 16:28:05,166 INFO Set uid to user 0 succeeded
-2021-12-27 16:28:05,183 INFO RPC interface 'supervisor' initialized
-2021-12-27 16:28:05,186 INFO daemonizing the supervisord process
-2021-12-27 16:28:05,188 INFO supervisord started with pid 8
