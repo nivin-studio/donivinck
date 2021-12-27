@@ -12,11 +12,14 @@ jobs:
     steps:
       - name: 代码检出
         uses: actions/checkout@v2
+        
+      - name: 构建代码
+        run: |
+          npm install
+          npm run docs:build
 
-      - name: 构建部署
+      - name: 部署代码
         uses: JamesIves/github-pages-deploy-action@4.1.8
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: docs/.vuepress/dist
-          BUILD_SCRIPT: npm install && npm run docs:build
+        with:
+          branch: gh-pages
+          folder: docs/.vuepress/dist
