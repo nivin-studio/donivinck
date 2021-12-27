@@ -1,17 +1,8 @@
 version: '3.5'
 
 networks:
-  frontend:
-    driver: ${NETWORKS_DRIVER}
   backend:
     driver: ${NETWORKS_DRIVER}
-volumes:
-  mysql:
-    driver: ${VOLUMES_DRIVER}
-  redis:
-    driver: ${VOLUMES_DRIVER}
-  mongo:
-    driver: ${VOLUMES_DRIVER}
 
 services:
   mysql:
@@ -24,13 +15,13 @@ services:
       - MYSQL_USER=${MYSQL_USERNAME}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
     volumes:
       - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
     ports:
       - "${MYSQL_PORT}:3306"
     networks:
       - backend
+    restart: always
 
   redis:
     build:
@@ -41,6 +32,7 @@ services:
       - "${REDIS_PORT}:6379"
     networks:
       - backend
+    restart: always
 
   mongo:
     build:
@@ -55,58 +47,59 @@ services:
       - "${MONGO_PORT}:27017"
     networks:
       - backend
+    restart: always
 
-  mysql-webui:
+  mysql-manage:
     build:
-      context: ./mysql-webui
+      context: ./mysql-manage
     environment:
       - PMA_ARBITRARY=1
-      - MYSQL_USER=${MYSQL_WEBUI_USER}
-      - MYSQL_PASSWORD=${MYSQL_WEBUI_PASSWORD}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_WEBUI_ROOT_PASSWORD}
-      - PMA_HOST=${MYSQL_WEBUI_CONNECT_HOST}
-      - PMA_PORT=${MYSQL_WEBUI_CONNECT_PORT}
+      - MYSQL_USER=${MYSQL_MANAGE_USERNAME}
+      - MYSQL_PASSWORD=${MYSQL_MANAGE_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_MANAGE_ROOT_PASSWORD}
+      - PMA_HOST=${MYSQL_MANAGE_CONNECT_HOST}
+      - PMA_PORT=${MYSQL_MANAGE_CONNECT_PORT}
     ports:
-      - "${MYSQL_WEBUI_PORT}:80"
+      - "${MYSQL_MANAGE_PORT}:80"
     depends_on:
       - mysql
     networks:
-      - frontend
       - backend
+    restart: always
 
-  redis-webui:
+  redis-manage:
     build:
-      context: ./redis-webui
+      context: ./redis-manage
     environment:
-      - ADMIN_USER=${REDIS_WEBUI_USERNAME}
-      - ADMIN_PASS=${REDIS_WEBUI_PASSWORD}
-      - REDIS_1_HOST=${REDIS_WEBUI_CONNECT_HOST}
-      - REDIS_1_PORT=${REDIS_WEBUI_CONNECT_PORT}
+      - ADMIN_USER=${REDIS_MANAGE_USERNAME}
+      - ADMIN_PASS=${REDIS_MANAGE_PASSWORD}
+      - REDIS_1_HOST=${REDIS_MANAGE_CONNECT_HOST}
+      - REDIS_1_PORT=${REDIS_MANAGE_CONNECT_PORT}
     ports:
-      - "${REDIS_WEBUI_PORT}:80"
+      - "${REDIS_MANAGE_PORT}:80"
     depends_on:
       - redis
     networks:
-      - frontend
       - backend
+    restart: always
 
-  mongo-webui:
+  mongo-manage:
     build:
-      context: ./mongo-webui
+      context: ./mongo-manage
     environment:
-      - ME_CONFIG_BASICAUTH_USERNAME=${MONGO_WEBUI_USERNAME}
-      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGO_WEBUI_PASSWORD}
-      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_WEBUI_CONNECT_USERNAME}
-      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_WEBUI_CONNECT_PASSWORD}
-      - ME_CONFIG_MONGODB_PORT=${MONGO_WEBUI_CONNECT_PORT}
-      - ME_CONFIG_MONGODB_SERVER=${MONGO_WEBUI_CONNECT_HOST}
+      - ME_CONFIG_BASICAUTH_USERNAME=${MONGO_MANAGE_USERNAME}
+      - ME_CONFIG_BASICAUTH_PASSWORD=${MONGO_MANAGE_PASSWORD}
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_MANAGE_CONNECT_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_MANAGE_CONNECT_PASSWORD}
+      - ME_CONFIG_MONGODB_PORT=${MONGO_MANAGE_CONNECT_PORT}
+      - ME_CONFIG_MONGODB_SERVER=${MONGO_MANAGE_CONNECT_HOST}
     ports:
-      - "${MONGO_WEBUI_PORT}:8081"
+      - "${MONGO_MANAGE_PORT}:8081"
     depends_on:
       - mongo
     networks:
-      - frontend
       - backend
+    restart: always
 
   nginx:
     build:
@@ -124,8 +117,8 @@ services:
     depends_on:
       - php
     networks:
-      - frontend
       - backend
+    restart: always
 
   php:
     build:
@@ -142,3 +135,4 @@ services:
       - "9000"
     networks:
       - backend
+    restart: always
