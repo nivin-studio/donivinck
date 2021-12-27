@@ -4,7 +4,7 @@ LABEL maintainer="Ving <ving@nivin.cn>"
 
 # 安装必要的软件包和依赖包
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/' /etc/apk/repositories && \
-	apk update && \
+    apk update && \
     apk upgrade && \
     apk --update add logrotate && \
     apk add --no-cache openssl && \
@@ -17,7 +17,7 @@ RUN set -x ; \
     adduser -u 82 -D -S -G www-data www-data && exit 0 ; exit 1
 
 # 复制日志分片配置
-COPY logrotate.conf /etc
+COPY logrotate.conf /etc/logrotate.d/
 
 # 复制nginx配置
 COPY nginx.conf /etc/nginx/

@@ -40,6 +40,11 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.lis
     cron \
     supervisor
 
+# 设置时区
+ARG TZ=UTC
+ENV TZ ${TZ}
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # 安装PHP基础扩展
 USER root
 RUN docker-php-ext-configure gd \
