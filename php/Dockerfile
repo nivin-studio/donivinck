@@ -2,12 +2,22 @@ FROM php:7.3-fpm
 
 LABEL maintainer="Ving <ving@nivin.cn>"
 
+# 设置国内源
+ARG CHANGE_SOURCE=false
+RUN if [ ${CHANGE_SOURCE} = true ]; then \
+    sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
+    sed -i 's/security.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
+    sed -i 's/security-cdn.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list \
+;fi
+
+# 设置时区
+ARG TZ=UTC
+ENV TZ ${TZ}
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # 安装必要的软件包和依赖包
 USER root
-RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
-    sed -i 's/security.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
-    sed -i 's/security-cdn.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.list && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get upgrade -y && \
     pecl channel-update pecl.php.net && \
     apt-get install -y --no-install-recommends \
@@ -21,6 +31,7 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.lis
     libpng-dev \
     libfreetype6-dev \
     libssl-dev \
+    libwebp-dev \
     libmcrypt-dev \
     libpcre3-dev \
     libzip-dev \
@@ -29,6 +40,7 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.lis
     jpegoptim \
     optipng \
     pngquant \
+    gnupg2 \
     gifsicle \
     libmagickwand-dev \
     imagemagick \
@@ -40,18 +52,14 @@ RUN sed -i 's/deb.debian.org/mirrors.tuna.tsinghua.edu.cn/' /etc/apt/sources.lis
     cron \
     supervisor
 
-# 设置时区
-ARG TZ=UTC
-ENV TZ ${TZ}
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 # 安装PHP基础扩展
 USER root
 RUN docker-php-ext-configure gd \
-    --with-jpeg-dir=/usr/lib \
-    --with-freetype-dir=/usr/include/freetype2 && \
+        --with-jpeg-dir=/usr/lib \
+        --with-webp-dir=/usr/lib \
+        --with-freetype-dir=/usr/include/freetype2 && \
     docker-php-ext-install gd && \
-    docker-php-ext-configure zip --with-libzip && \
+    docker-php-ext-configure zip && \
     docker-php-ext-install zip && \
     docker-php-ext-install pgsql && \
     docker-php-ext-install mysqli && \

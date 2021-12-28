@@ -124,8 +124,9 @@ services:
     build:
       context: ./php
       args:
-        - PHP_INSTALL_PHALCON=${PHP_INSTALL_PHALCON}
         - TZ=${TZ}
+        - PHP_CHANGE_SOURCE=${PHP_CHANGE_SOURCE}
+        - PHP_INSTALL_PHALCON=${PHP_INSTALL_PHALCON}
     volumes:
       - ${PHP_CONFIG_PATH}/php7.3.ini:/usr/local/etc/php/php.ini
       - ${PHP_SUPERVISORD_PATH}:/etc/supervisord.d
