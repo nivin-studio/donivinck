@@ -17,6 +17,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - ${DATA_PATH_HOST}/mysql:/var/lib/mysql
+      - ${MYSQL_CONFIG_PATH}/my.cnf:/etc/mysql/conf.d/my.cnf
     ports:
       - "${MYSQL_PORT}:3306"
     networks:
